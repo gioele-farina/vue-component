@@ -9,7 +9,9 @@ class MainController extends Controller
 {
 
     public function index(){
-      return view('pages.index');
+      $ghosts = Ghost::all();
+
+      return view('pages.index', compact('ghosts'));
     }
 
     // API

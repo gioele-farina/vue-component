@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Color;
 use App\Ghost;
 
 class GhostSeeder extends Seeder
@@ -12,12 +13,13 @@ class GhostSeeder extends Seeder
      */
     public function run()
     {
-        $colors = ['yellow', 'pink', 'red', 'lightblue'];
 
-        for ($i=0; $i < 10; $i++) {
-          $newGhost = new Ghost();
-          $newGhost -> color = $colors[rand(0,3)];
-          $newGhost -> save();
-        }
+      for ($i=0; $i < 10; $i++) {
+        $newGhost = new Ghost();
+        $color = Color::inRandomOrder() -> first();
+        $newGhost -> color() -> associate($color);
+        $newGhost -> save();
+      }
+
     }
 }

@@ -1,0 +1,12 @@
+.fantasmino-container {
+  width: 60%;
+  min-height: 150px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px auto;
+
+  .fantasmino-img {
+    height: 150px;
+    width: auto;
+  }
+}

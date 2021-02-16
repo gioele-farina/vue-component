@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(GhostSeeder::class);
+        $this->call([
+          ColorSeeder::class,
+          GhostSeeder::class,
+        ]);
     }
 }

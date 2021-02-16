@@ -10944,3 +10944,21 @@ a.text-dark:focus {
   }
 }
 
+.fantasmino-container {
+  width: 60%;
+  min-height: 150px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.fantasmino-container .fantasmino-img {
+  height: 150px;
+  width: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+}
+

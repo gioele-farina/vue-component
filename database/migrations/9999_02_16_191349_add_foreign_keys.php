@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGhostsTable extends Migration
+class AddForeignKeys extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateGhostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ghosts', function (Blueprint $table) {
-            $table->id();
-
-            $table->unsignedBigInteger('color_id');
-
-            $table->timestamps();
-        });
+      Schema::table('ghosts', function (Blueprint $table) {
+        $table -> foreign('color_id', 'ghost-color')
+               -> references('id')
+               -> on('colors');
+      });
     }
 
     /**
@@ -29,6 +27,8 @@ class CreateGhostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ghosts');
+      Schema::table('ghosts', function (Blueprint $table) {
+        $table -> dropForeign('ghost-color');
+      });
     }
 }
