@@ -1,6 +1,6 @@
 <template>
   <div class="fantasmino-container">
-    <img class="fantasmino-img" :src="'/storage/imgs/' + ghost_color.name + '.png'" alt="">
+    <img class="fantasmino-img" :src="'/storage/imgs/' + ghostColor + '.png'" alt="">
 
     <div class="select-colori">
       <select name="colore" v-model="selectedColor">
@@ -23,6 +23,7 @@
         data: function() {
            return {
               selectedColor: this.ghost_color.id,
+              ghostColor: this.ghost_color.name
            };
         },
 
@@ -37,12 +38,13 @@
 
             console.log(newColor);
             let url = 'http://localhost:8000/edit/ghost/' + this.ghost.id
-        
+
             axios.post(url, {
                 newcolor: this.selectedColor
               })
-              .then(function (response) {
-                console.log(response.data);
+              .then((response) => {
+                // console.log(response.data.new_color.name);
+                this.ghostColor = response.data.new_color.name;
               })
 
           }

@@ -1977,7 +1977,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selectedColor: this.ghost_color.id
+      selectedColor: this.ghost_color.id,
+      ghostColor: this.ghost_color.name
     };
   },
   props: {
@@ -1987,12 +1988,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     selectedColor: function selectedColor(newColor) {
+      var _this = this;
+
       console.log(newColor);
       var url = 'http://localhost:8000/edit/ghost/' + this.ghost.id;
       axios.post(url, {
         newcolor: this.selectedColor
       }).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data.new_color.name);
+        _this.ghostColor = response.data.new_color.name;
       });
     }
   },
@@ -37614,7 +37618,7 @@ var render = function() {
   return _c("div", { staticClass: "fantasmino-container" }, [
     _c("img", {
       staticClass: "fantasmino-img",
-      attrs: { src: "/storage/imgs/" + _vm.ghost_color.name + ".png", alt: "" }
+      attrs: { src: "/storage/imgs/" + _vm.ghostColor + ".png", alt: "" }
     }),
     _vm._v(" "),
     _c("div", { staticClass: "select-colori" }, [

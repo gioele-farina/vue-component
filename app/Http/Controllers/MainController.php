@@ -26,10 +26,14 @@ class MainController extends Controller
     }
 
     public function editGhost(Request $request, $id){
-      $dati = $request -> all();
+      $ghost = Ghost::findOrFail($id);
+      $color = Color::findOrFail($request -> newcolor);
+      $ghost -> color() -> dissociate();
+      $ghost -> color() -> associate($color);
+      $ghost -> save();
+
       return response() -> json([
-        'id' => $id,
-        'request' => $dati
+        'new_color' => $color
       ]);
     }
 }
