@@ -5,7 +5,10 @@
   <div id="app">
     @foreach ($ghosts as $ghost)
       <fantasmino-component
-        :color="'{{ $ghost -> color -> name }}'"
+        {{-- :ghost_color="'{{ $ghost -> color -> name }}'" --}}
+        :ghost_color={{ $ghost -> color}}
+        :all_colors={{$colors}}
+        :ghost={{$ghost}}
       ></fantasmino-component>
     @endforeach
   </div>

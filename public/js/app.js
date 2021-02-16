@@ -1961,16 +1961,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      selectedColor: this.ghost_color.id
+    };
   },
   props: {
-    color: String
+    ghost_color: Object,
+    all_colors: Array,
+    ghost: Object
+  },
+  watch: {
+    selectedColor: function selectedColor(newColor) {
+      console.log(newColor);
+      var url = 'http://localhost:8000/edit/ghost/' + this.ghost.id;
+      axios.post(url, {
+        newcolor: this.selectedColor
+      }).then(function (response) {
+        console.log(response.data);
+      });
+    }
   },
   mounted: function mounted() {
     console.log('Fantasmino mounted.');
-    console.log(this.color);
+  },
+  methods: {// edit: function (colorId) {
+    //   console.log(colorId);
+    // }
   }
 });
 
@@ -37583,8 +37614,53 @@ var render = function() {
   return _c("div", { staticClass: "fantasmino-container" }, [
     _c("img", {
       staticClass: "fantasmino-img",
-      attrs: { src: "/storage/imgs/" + _vm.color + ".png", alt: "" }
-    })
+      attrs: { src: "/storage/imgs/" + _vm.ghost_color.name + ".png", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "select-colori" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedColor,
+              expression: "selectedColor"
+            }
+          ],
+          attrs: { name: "colore" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedColor = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        _vm._l(_vm.all_colors, function(color) {
+          return _c(
+            "option",
+            {
+              domProps: {
+                value: color.id,
+                selected: color.name === _vm.ghost_color.name
+              }
+            },
+            [_vm._v("\n        " + _vm._s(color.name) + "\n      ")]
+          )
+        }),
+        0
+      )
+    ])
   ])
 }
 var staticRenderFns = []
