@@ -1,5 +1,5 @@
 <template>
-  <div class="fantasmino-container">
+  <div class="fantasmino-container" v-show="!ifDeleted">
     <img class="fantasmino-img" :src="'/storage/imgs/' + ghostColor + '.png'" alt="">
 
     <div class="select-colori">
@@ -14,6 +14,7 @@
       </select>
     </div>
 
+    <button type="button" name="Delete" @click="delete_ghost()" >Delete</button>
   </div>
 </template>
 
@@ -23,7 +24,8 @@
         data: function() {
            return {
               selectedColor: this.ghost_color.id,
-              ghostColor: this.ghost_color.name
+              ghostColor: this.ghost_color.name,
+              ifDeleted: false
            };
         },
 
@@ -53,12 +55,19 @@
 
         mounted() {
             console.log('Fantasmino mounted.');
+            // console.log(this.ghost_color);
+            // console.log(this.all_colors);
+            // console.log(this.ghost);
         },
 
         methods: {
-           // edit: function (colorId) {
-           //   console.log(colorId);
-           // }
+           delete_ghost: function () {
+             axios.get('http://localhost:8000/delete/ghost/' + this.ghost.id)
+              .then((response) => {
+                console.log(response);
+                this.ifDeleted = true;
+              })
+           }
         }
 
     }

@@ -36,4 +36,25 @@ class MainController extends Controller
         'new_color' => $color
       ]);
     }
+
+    public function createGhost(Request $request){
+      $newGhost = new Ghost();
+      $color = Color::findOrFail($request -> color);
+      $newGhost -> color() -> associate($color);
+      $newGhost -> save();
+
+      $ghosts = Ghost::all();
+      return response() -> json([
+        'ghosts' => $ghosts
+      ]);
+    }
+
+    public function deleteGhost($id){
+      $ghost = Ghost::findOrFail($id);
+      $ghost -> delete();
+
+      return response() -> json([
+        'message' => 'ok'
+      ]);
+    }
 }
