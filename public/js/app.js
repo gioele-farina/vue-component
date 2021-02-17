@@ -2045,6 +2045,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37828,7 +37831,7 @@ var render = function() {
       staticClass: "fantasmino-container"
     },
     [
-      _c("section", [
+      _c("section", { staticClass: "img-container" }, [
         _c("img", {
           staticClass: "fantasmino-img",
           attrs: { src: "/storage/imgs/" + _vm.ghostColor + ".png", alt: "" }
@@ -37836,6 +37839,8 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("section", { staticClass: "select-colori" }, [
+        _vm._m(0),
+        _vm._v(" "),
         _c(
           "select",
           {
@@ -37881,22 +37886,28 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c(
-        "button",
+        "div",
         {
-          staticClass: "delete-button",
-          attrs: { type: "button", name: "Delete" },
+          staticClass: "delete-ghost",
           on: {
             click: function($event) {
               return _vm.delete_ghost()
             }
           }
         },
-        [_vm._v("Delete")]
+        [_c("i", { staticClass: "far fa-trash-alt" })]
       )
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", [_vm._v("Change "), _c("br"), _vm._v(" color:")])
+  }
+]
 render._withStripped = true
 
 

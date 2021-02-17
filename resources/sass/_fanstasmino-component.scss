@@ -4,9 +4,45 @@
   border: 15px solid black;
   border-radius: 15px;
   margin: 10px auto;
+  position: relative;
+  display: flex;
 
-  .fantasmino-img {
-    height: 150px;
-    width: auto;
+  .img-container {
+
+    .fantasmino-img {
+      height: 150px;
+      width: auto;
+    }
+  }
+
+  .select-colori {
+    text-align: right;
+    color: $pink;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px;
+
+    h3 {
+      font-size: 2rem;
+      display: inline-block;
+    }
+
+    select {
+      margin-left: 10px;
+      width: 150px;
+      border-radius: 5px;
+    }
+  }
+
+  .delete-ghost {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 50px;
+
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
   }
 }
