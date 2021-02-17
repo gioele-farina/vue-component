@@ -7,11 +7,29 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-//fantasmino-component
+//components
 @import 'fanstasmino-component';
+@import 'controller-fantasmini';
 
 
-.title {
+html {
+  font-size: 15px;
+}
+
+body {
+  background-color: #404040;
+}
+
+.title,
+.sub-title {
   text-align: center;
+  font-family: 'Reggae One', cursive;
+  color: $indigo;
+}
+.title{
+  font-size: 3rem;
+  margin-top: 5px;
+}
+.sub-title {
   font-size: 2rem;
 }

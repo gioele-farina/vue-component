@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="create ghost">
+    <div class="create-ghost">
 
-      <p>Create a new Ghost</p>
+      <h2>Create a new Ghost</h2>
       <select name="colore" v-model="newGhostColor">
         <option v-for="color in all_colors" :value="color.id">
           {{ color.name }}
@@ -11,7 +11,7 @@
       <button type="button" name="Crea" @click="crea()">Crea</button>
 
     </div>
-    <!-- devo passare l'oggetto colore in ghost_color. la prima riga fa cacare-->
+
     <fantasmino-component
       v-for="fantasmino in all_fantasmini"
       :key="fantasmino.id"

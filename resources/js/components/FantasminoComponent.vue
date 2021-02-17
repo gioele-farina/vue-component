@@ -1,8 +1,10 @@
 <template>
   <div class="fantasmino-container" v-show="!ifDeleted">
-    <img class="fantasmino-img" :src="'/storage/imgs/' + ghostColor + '.png'" alt="">
+    <section>
+      <img class="fantasmino-img" :src="'/storage/imgs/' + ghostColor + '.png'" alt="">
+    </section>
 
-    <div class="select-colori">
+    <section class="select-colori">
       <select name="colore" v-model="selectedColor">
 
         <option v-for="color in all_colors" :value="color.id"
@@ -12,9 +14,9 @@
         </option>
 
       </select>
-    </div>
+    </section>
 
-    <button type="button" name="Delete" @click="delete_ghost()" >Delete</button>
+    <button class="delete-button" type="button" name="Delete" @click="delete_ghost()" >Delete</button>
   </div>
 </template>
 

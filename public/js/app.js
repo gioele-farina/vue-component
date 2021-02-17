@@ -2043,6 +2043,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37723,8 +37725,8 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "create ghost" }, [
-        _c("p", [_vm._v("Create a new Ghost")]),
+      _c("div", { staticClass: "create-ghost" }, [
+        _c("h2", [_vm._v("Create a new Ghost")]),
         _vm._v(" "),
         _c(
           "select",
@@ -37826,12 +37828,14 @@ var render = function() {
       staticClass: "fantasmino-container"
     },
     [
-      _c("img", {
-        staticClass: "fantasmino-img",
-        attrs: { src: "/storage/imgs/" + _vm.ghostColor + ".png", alt: "" }
-      }),
+      _c("section", [
+        _c("img", {
+          staticClass: "fantasmino-img",
+          attrs: { src: "/storage/imgs/" + _vm.ghostColor + ".png", alt: "" }
+        })
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "select-colori" }, [
+      _c("section", { staticClass: "select-colori" }, [
         _c(
           "select",
           {
@@ -37879,6 +37883,7 @@ var render = function() {
       _c(
         "button",
         {
+          staticClass: "delete-button",
           attrs: { type: "button", name: "Delete" },
           on: {
             click: function($event) {
